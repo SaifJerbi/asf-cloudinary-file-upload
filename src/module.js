@@ -13,18 +13,16 @@ cloudinaryFileUploadModule.config(function (schemaFormDecoratorsProvider, sfBuil
     'src/templates/asf-cloudinary-file-upload.html',  // Template name in $templateCache
     sfBuilderProvider.stdBuilders   // List of builder functions to apply.
   );
-
 });
-cloudinaryFileUploadModule.config(['cloudinaryProvider', function (cloudinaryProvider) {
-  cloudinaryProvider
-    .set("cloud_name", "dzsga4ipw")
-    .set("upload_preset", "l4xl7fyy");
-}]);
-cloudinaryFileUploadModule.controller('cloudinaryFileUploadCtrl', ['$scope', '$location', 'Upload', 'cloudinary', 
-  function ($scope, $location, $upload, cloudinary) {
+
+cloudinaryFileUploadModule.controller('cloudinaryFileUploadCtrl', ['$scope', 'Upload','cloudinary',
+  function ($scope,  $upload, cloudinary) {
     var d = new Date();
     $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
     $scope.model.title = $scope.title;
+    cloudinary.config().cloud_name= $scope.form.cloudName;
+    cloudinary.config().upload_preset = $scope.form.uploadPreset;
+
     $scope.uploadFiles = function(files){
       $scope.files = files;
       if (!$scope.files) return;

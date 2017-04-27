@@ -25,20 +25,20 @@
       angular.module('test', ["schemaForm","cloudinaryFileUpload"]).controller('FormController', function($scope) {
 
         $scope.schema = {
-  "type": "object",
-  "properties": {
-    "name": {
-      "type": "string",
-      "title": "Cloudinar File Upload",
-      "description": "Testing cloudinary file upload ASF addon",
-      "maxLength": 10,
-      "minLength": 2,
-      "required": true
-    }
-  }
-}
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Cloudinar File Upload",
+              "description": "Testing cloudinary file upload ASF addon",
+              "maxLength": 10,
+              "minLength": 2,
+              "required": true
+            }
+          }
+        }
 
-        $scope.form = [{"type":"cloudinaryfileupload","key":"image","myOwnFormOption":"Hello Cloudinary cloud service!"}]
+        $scope.form = [{"label":"Thumbnail","type":"cloudinaryfileupload","key":"thumbnailPath","cloudName":"YOUR_CLOUDINARY_NAME","uploadPreset":"YOUR_UPLOAD_PRESET"}]
         $scope.model = {};
 
         $scope.debug = {schema: angular.copy($scope.schema), form: angular.copy($scope.form)};
