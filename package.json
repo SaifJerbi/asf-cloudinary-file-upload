@@ -1,0 +1,18 @@
+{
+  "name": "cloudinary-file-upload",
+  "version": "1.0.0",
+  "description": "cloudinary file upload add-on for Angular Schema Form.",
+  "author": "SaifJerbi",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-server-livereload": "^1.9.2",
+    "gulp-uglify": "^2.1.2",
+    "streamqueue": "^1.1.1"
+  }
+}
