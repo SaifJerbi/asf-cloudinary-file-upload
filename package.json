@@ -1,5 +1,5 @@
 {
-  "name": "cloudinary-file-upload",
+  "name": "asf-cloudinary-file-upload",
   "version": "1.0.0",
   "description": "cloudinary file upload add-on for Angular Schema Form.",
   "author": "SaifJerbi",

@@ -33,10 +33,10 @@ gulp.task('minify', function () {
     })),
     gulp.src(files)
   )
-  .pipe(concat('cloudinary-file-upload.js'))
+  .pipe(concat('asf-cloudinary-file-upload.js'))
   .pipe(gulp.dest('./dist'))
   .pipe(uglify())
-  .pipe(rename('cloudinary-file-upload.min.js'))
+  .pipe(rename('asf-cloudinary-file-upload.min.js'))
   .pipe(gulp.dest('./dist'));
 
   return stream;
