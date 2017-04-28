@@ -25,8 +25,6 @@ CloudinaryFileUploadCtrl.$inject = ['$scope', 'Upload','cloudinary'];
 
   function CloudinaryFileUploadCtrl ($scope,  $upload, cloudinary) {
     var d = new Date();
-    $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
-    $scope.model.title = $scope.title;
     cloudinary.config().cloud_name= $scope.form.cloudName;
     cloudinary.config().upload_preset = $scope.form.uploadPreset;
 
@@ -40,7 +38,6 @@ CloudinaryFileUploadCtrl.$inject = ['$scope', 'Upload','cloudinary'];
             data: {
               upload_preset: cloudinary.config().upload_preset,
               tags: 'myphotoalbum',
-              context: 'photo=' + $scope.title,
               file: file
             }
           }).progress(function (e) {
@@ -48,7 +45,6 @@ CloudinaryFileUploadCtrl.$inject = ['$scope', 'Upload','cloudinary'];
             file.status = "Uploading... " + file.progress + "%";
           }).success(function (data, status, headers, config) {
             $scope.photos = $scope.photos || [];
-            data.context = {custom: {photo: $scope.title}};
             file.result = data;
             $scope.model.image = data;
             $scope.photos.push(data);

@@ -8,12 +8,6 @@
     ng-multiple="true" ng-controller="cloudinaryFileUploadCtrl">
     <form>
         <div class="form_line">
-            <label path="title">Title:</label>
-            <div class="form_controls">
-                <input type="text" class="form-control" placeholder="Title" ng-model="title" />
-            </div>
-        </div>
-        <div class="form_line">
             <label>{{form.label}}:</label>
             <div class="form_controls">
                 <div class="upload_button_holder">
@@ -22,7 +16,6 @@
             </div>
         </div>
     </form>
-    <h2>Status</h2>
     <div class="file" ng-repeat="file in files">
         <h3>{{file.name}} {{f.$error}} {{f.$errorParam}}</h3>
         <div class="status">{{file.status}}</div>
@@ -37,7 +30,6 @@
             </div>
         </div>
     </div>
-    
 </div>
   <!-- sf-field-model let's the ngModel builder know that you want a ng-model that matches against the form key here -->
   <!-- schema-validate="form" validates the form against the schema -->
