@@ -7,7 +7,10 @@ var cloudinaryFileUploadModule = angular.module('cloudinaryFileUpload', [
   'templates', 'cloudinary', 'ngFileUpload'
 ]);
 
-cloudinaryFileUploadModule.config(function (schemaFormDecoratorsProvider, sfBuilderProvider) {
+cloudinaryFileUploadModule.config(CloudinaryFileUploadConfig);
+CloudinaryFileUploadConfig.$inject = ['schemaFormDecoratorsProvider', 'sfBuilderProvider'];
+
+function CloudinaryFileUploadConfig(schemaFormDecoratorsProvider, sfBuilderProvider) {
 
   schemaFormDecoratorsProvider.defineAddOn(
     'bootstrapDecorator',           // Name of the decorator you want to add to.
@@ -15,7 +18,7 @@ cloudinaryFileUploadModule.config(function (schemaFormDecoratorsProvider, sfBuil
     'src/templates/asf-cloudinary-file-upload.html',  // Template name in $templateCache
     sfBuilderProvider.stdBuilders   // List of builder functions to apply.
   );
-});
+};
 
 cloudinaryFileUploadModule.controller('cloudinaryFileUploadCtrl', CloudinaryFileUploadCtrl);
 
