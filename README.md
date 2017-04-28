@@ -1,4 +1,4 @@
-Angular Schema Form Cloudinary FileU pload add-on by Saif Jerbi
+Angular Schema Form Cloudinary File Upload add-on by Saif Jerbi
 =================
 
 This file upload add-on uses the official [Cloudinary](https://cloudinary.com) client library for AngularJS to provide a file upload interface.
@@ -35,9 +35,14 @@ Options
 ------------
 
 The `cloudinaryfileupload` field takes two options.
-|  Form Type    |   Becomes            |
-|:--------------|:--------------------:|
+
+|  Form Type    |   Becomes                   |
+|:--------------|:---------------------------:|
 |  cloudName    |  [Cloudinary configuration](http://cloudinary.com/documentation/upload_images) |
 |  uploadPreset |  [Cloudinary configuration](http://cloudinary.com/documentation/upload_images) |
 
-you can refer to [Cloudinary Admin Configuration](http://cloudinary.com/documentation/admin_api) for more details.
+You can refer to [Cloudinary Admin Configuration](http://cloudinary.com/documentation/admin_api) for more details.
+
+Example
+------------
+
