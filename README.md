@@ -46,3 +46,27 @@ You can refer to [Cloudinary Admin Configuration](http://cloudinary.com/document
 Example
 ------------
 
+```javascript
+angular.module('test', ["schemaForm","cloudinaryFileUpload"]).controller('FormController', function($scope) {
+
+        $scope.schema = {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Cloudinar File Upload",
+              "description": "Testing cloudinary file upload ASF addon",
+            }
+          }
+        }
+
+        $scope.form = [
+            {"label":"Thumbnail",
+            "type":"cloudinaryfileupload",
+            "key":"thumbnailPath",
+            "cloudName":"YOUR_CLOUDINARY_NAME",
+            "uploadPreset":"YOUR_UPLOAD_PRESET"}]
+        $scope.model = {};
+      });
+
+```
