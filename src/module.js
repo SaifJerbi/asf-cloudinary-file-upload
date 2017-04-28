@@ -1,4 +1,5 @@
-'use strict';
+(function() {
+	'use strict';
 
 var cloudinaryFileUploadModule = angular.module('cloudinaryFileUpload', [
   'schemaForm',
@@ -15,8 +16,11 @@ cloudinaryFileUploadModule.config(function (schemaFormDecoratorsProvider, sfBuil
   );
 });
 
-cloudinaryFileUploadModule.controller('cloudinaryFileUploadCtrl', ['$scope', 'Upload','cloudinary',
-  function ($scope,  $upload, cloudinary) {
+cloudinaryFileUploadModule.controller('cloudinaryFileUploadCtrl', CloudinaryFileUploadCtrl);
+
+CloudinaryFileUploadCtrl.$inject = ['$scope', 'Upload','cloudinary'];
+
+  function CloudinaryFileUploadCtrl ($scope,  $upload, cloudinary) {
     var d = new Date();
     $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
     $scope.model.title = $scope.title;
@@ -51,4 +55,6 @@ cloudinaryFileUploadModule.controller('cloudinaryFileUploadCtrl', ['$scope', 'Up
         }
       });
     };
-}]);
+}
+
+})();
