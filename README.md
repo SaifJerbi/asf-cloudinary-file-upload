@@ -17,8 +17,11 @@ To use it, just include:
     <script src="../bower_components/cloudinary_ng/js/angular.cloudinary.js"></script>
     <!-- angular file upload -->
     <script src="../bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <!-- asf-cloudinary file upload js file-->
+    <script src="../dist/asf-cloudinary-file-upload.min.js"></script>
+    <!-- asf-cloudinary file upload stylesheet-->
+    <link rel="stylesheet" href="../dist/asf-cloudinary-file-upload.min.css">
 
-    <script src="../dist/asf-cloudinary-file-upload.js"></script>
 ```
 Be sure to load this projects files after you load angular schema form
 
