@@ -6,8 +6,9 @@ var rename = require('gulp-rename');
 var templateCache = require('gulp-angular-templatecache');
 var streamqueue = require('streamqueue');
 var fs = require('fs');
+var cleanCSS = require('gulp-clean-css');
 
-gulp.task('default', ['minify', 'connect', 'watch']);
+gulp.task('default', ['minify','minify-css', 'connect', 'watch']);
 
 gulp.task('connect', function () {
   connect.server({
@@ -22,6 +23,12 @@ gulp.task('reload', ['minify'], function () {
 
 gulp.task('watch', function () {
   gulp.watch(['./src/**', './demo/**'], ['reload']);
+});
+
+gulp.task('minify-css', () => {
+  return gulp.src('src/templates/*.css')
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('minify', function () {

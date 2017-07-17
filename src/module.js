@@ -46,10 +46,14 @@ CloudinaryFileUploadCtrl.$inject = ['$scope', 'Upload','cloudinary'];
           }).success(function (data, status, headers, config) {
             $scope.photos = $scope.photos || [];
             file.result = data;
+            file.result.success= true;
             $scope.model.image = data;
             $scope.photos.push(data);
+            file.status = "Uploaded";
           }).error(function (data, status, headers, config) {
             file.result = data;
+            file.result.failed= true;
+            file.status = data.error.message;
           });
         }
       });

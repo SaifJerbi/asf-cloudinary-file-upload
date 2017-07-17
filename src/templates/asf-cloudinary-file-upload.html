@@ -6,35 +6,23 @@
     ngf-drag-over-class="dragOverClass($event)"
     ng-model="files"
     ng-multiple="true" ng-controller="cloudinaryFileUploadCtrl">
-    <form>
-        <div class="form_line">
-            <label>{{form.label}}:</label>
-            <div class="form_controls">
-                <div class="upload_button_holder">
-                    <div href="#" class="upload_button" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" >Upload</div>
-                </div>
+      <div class="setting image_picker">
+        <h2>{{form.label}}:</h2>
+        <div class="settings_wrap">
+          <label class="drop_target" ngf-select="uploadFiles($files)" resetOnClick="true">
+          </label>
+          <div class="settings_actions vertical" ng-repeat="file in files" ng-class="{'upload-success': file.result.success, 'upload-error': file.result.failed==true}">
+            <a data-action="choose_from_uploaded">
+            <i class="fa fa-picture-o"></i>  {{file.name}} </a>
+            <a class="disabled" data-action="remove_current_image">  
+              <i class = "fa" ng-class="{'fa-retweet': !file.result.success && !file.result.error, 'fa-check-circle': file.result.success, 'fa-meh-o': file.result.failed}"></i> 
+              {{file.status}}
+            </a>
+            <div class="progress"> 
+              <div class="progress-bar" role="progressbar" style="width: {{file.progress}}%" ng-init="file.progress=0"></div>
             </div>
-        </div>
-    </form>
-    <div class="file" ng-repeat="file in files">
-        <h3>{{file.name}} {{f.$error}} {{f.$errorParam}}</h3>
-        <div class="status">{{file.status}}</div>
-        <div class="progress-bar">
-          <div class="progress" style="width: {{file.progress}}%" ng-init="progress=0"></div>
-        </div>
-        <div class="form_line">
-            <div class="form_controls">
-                <div class="preview">
-                    <img ngf-src="file.result.url || file" style="width: 150px;">
-                </div>
-            </div>
+          </div>
         </div>
     </div>
-</div>
-  <!-- sf-field-model let's the ngModel builder know that you want a ng-model that matches against the form key here -->
-  <!-- schema-validate="form" validates the form against the schema -->
-
-  <span sf-message="form.description"></span>
-  <!-- Description & Validation messages -->
-
+  </div>
 </div>

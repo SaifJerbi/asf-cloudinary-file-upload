@@ -1,3 +1,4 @@
+
 <html>
   <head>
     <script src="../bower_components/angular/angular.min.js"></script>
@@ -18,12 +19,10 @@
     <script src="../dist/asf-cloudinary-file-upload.js"></script>
 
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../dist/style.css">
 
     <script>
-
       angular.module('test', ["schemaForm","cloudinaryFileUpload"]).controller('FormController', function($scope) {
-
         $scope.schema = {
           "type": "object",
           "properties": {
@@ -37,14 +36,10 @@
             }
           }
         }
-
-        $scope.form = [{"label":"Thumbnail","type":"cloudinaryfileupload","key":"thumbnailPath","cloudName":"YOUR_CLOUDINARY_NAME","uploadPreset":"YOUR_UPLOAD_PRESET"}]
+        $scope.form = [{"label":"Thumbnail","type":"cloudinaryfileupload","key":"thumbnailPath","cloudName":"dzsga4ipw","uploadPreset":"l4xl7fyy"}]
         $scope.model = {};
-
         $scope.debug = {schema: angular.copy($scope.schema), form: angular.copy($scope.form)};
-
       });
-
     </script>
     <title>Testing cloudinary file upload ASF addon</title>
   </head>
@@ -56,7 +51,7 @@
           <form sf-schema="schema" sf-form="form" sf-model="model"></form>
         </div>
 
-        <div class="col-sm-6 debug">
+        <!--<div class="col-sm-6 debug">
           <div class="wrapper">
             <div class="row">
               <div class="col-md-12">
@@ -77,7 +72,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
     </div>
   </body>
 

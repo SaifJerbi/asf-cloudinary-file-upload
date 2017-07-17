@@ -14,13 +14,12 @@
 
 .back_link { font-weight: bold; display: block; font-size: 16px; margin: 10px 0; }
 
-form { border: 1px solid #ddd; margin: 15px 0; padding: 15px 0; border-radius: 4px; }
 form .form_line { margin-bottom: 20px; }
 form .form_controls { margin-left: 180px; }
 form label { float: left; width: 160px; padding-top: 3px; text-align: right; }
 form .error { color: #c55; margin: 0 10px; }
 
-#direct_upload, #direct_upload_jquery { border: 4px dashed #ccc; }
+#direct_upload, #direct_upload_jquery { border: 2px dashed #ccc; }
 #direct_upload.dragover { border-color: #0c0; }
 #direct_upload.dragover-err { border-color: #c00; }
 

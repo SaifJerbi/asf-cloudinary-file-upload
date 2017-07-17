@@ -1,4 +1,4 @@
-angular.module('templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('src/templates/asf-cloudinary-file-upload.html','<div>\n<!-- Surrounding DIV for sfField builder to add a sfField directive to. -->\n\n  <div id="direct_upload" \n    ngf-drop="uploadFiles($files)"\n    ngf-drag-over-class="dragOverClass($event)"\n    ng-model="files"\n    ng-multiple="true" ng-controller="cloudinaryFileUploadCtrl">\n    <form>\n        <div class="form_line">\n            <label>{{form.label}}:</label>\n            <div class="form_controls">\n                <div class="upload_button_holder">\n                    <div href="#" class="upload_button" ngf-select="uploadFiles($files)" title="upload" resetOnClick="true" >Upload</div>\n                </div>\n            </div>\n        </div>\n    </form>\n    <div class="file" ng-repeat="file in files">\n        <h3>{{file.name}} {{f.$error}} {{f.$errorParam}}</h3>\n        <div class="status">{{file.status}}</div>\n        <div class="progress-bar">\n          <div class="progress" style="width: {{file.progress}}%" ng-init="progress=0"></div>\n        </div>\n        <div class="form_line">\n            <div class="form_controls">\n                <div class="preview">\n                    <img ngf-src="file.result.url || file" style="width: 150px;">\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n  <!-- sf-field-model let\'s the ngModel builder know that you want a ng-model that matches against the form key here -->\n  <!-- schema-validate="form" validates the form against the schema -->\n\n  <span sf-message="form.description"></span>\n  <!-- Description & Validation messages -->\n\n</div>\n');}]);
+angular.module('templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('src/templates/asf-cloudinary-file-upload.html','<div>\n<!-- Surrounding DIV for sfField builder to add a sfField directive to. -->\n\n  <div id="direct_upload" \n    ngf-drop="uploadFiles($files)"\n    ngf-drag-over-class="dragOverClass($event)"\n    ng-model="files"\n    ng-multiple="true" ng-controller="cloudinaryFileUploadCtrl">\n      <div class="setting image_picker">\n        <h2>{{form.label}}:</h2>\n        <div class="settings_wrap">\n          <label class="drop_target" ngf-select="uploadFiles($files)" resetOnClick="true">\n          </label>\n          <div class="settings_actions vertical" ng-repeat="file in files" ng-class="{\'upload-success\': file.result.success, \'upload-error\': file.result.failed==true}">\n            <a data-action="choose_from_uploaded">\n            <i class="fa fa-picture-o"></i>  {{file.name}} </a>\n            <a class="disabled" data-action="remove_current_image">  \n              <i class = "fa" ng-class="{\'fa-retweet\': !file.result.success && !file.result.error, \'fa-check-circle\': file.result.success, \'fa-meh-o\': file.result.failed}"></i> \n              {{file.status}}\n            </a>\n            <div class="progress"> \n              <div class="progress-bar" role="progressbar" style="width: {{file.progress}}%" ng-init="file.progress=0"></div>\n            </div>\n          </div>\n        </div>\n    </div>\n  </div>\n</div>');}]);
 (function() {
 	'use strict';
 
@@ -47,10 +47,14 @@ CloudinaryFileUploadCtrl.$inject = ['$scope', 'Upload','cloudinary'];
           }).success(function (data, status, headers, config) {
             $scope.photos = $scope.photos || [];
             file.result = data;
+            file.result.success= true;
             $scope.model.image = data;
             $scope.photos.push(data);
+            file.status = "Uploaded";
           }).error(function (data, status, headers, config) {
             file.result = data;
+            file.result.failed= true;
+            file.status = data.error.message;
           });
         }
       });
