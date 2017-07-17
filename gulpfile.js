@@ -27,6 +27,7 @@ gulp.task('watch', function () {
 
 gulp.task('minify-css', () => {
   return gulp.src('src/templates/*.css')
+    .pipe(concat('asf-cloudinary-file-upload.min.css'))
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(gulp.dest('./dist'));
 });
