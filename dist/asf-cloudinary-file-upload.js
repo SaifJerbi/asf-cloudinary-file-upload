@@ -36,11 +36,12 @@ CloudinaryFileUploadCtrl.$inject = ['$scope', 'Upload','cloudinary'];
         if (file && !file.$error) {
           file.upload = $upload.upload({
             url: "https://api.cloudinary.com/v1_1/" + cloudinary.config().cloud_name + "/upload",
-            data: {
+            skipAuthorization: !$scope.form.skipAuthorization ? false : $scope.form.skipAuthorization, // tell satellizer.js not to add the authorization header
+            fields: {
               upload_preset: cloudinary.config().upload_preset,
               tags: 'myphotoalbum',
-              file: file
-            }
+            },
+            file: file
           }).progress(function (e) {
             file.progress = Math.round((e.loaded * 100.0) / e.total);
             file.status = "Uploading... " + file.progress + "%";
