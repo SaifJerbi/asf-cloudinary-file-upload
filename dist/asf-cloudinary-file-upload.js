@@ -28,7 +28,7 @@ CloudinaryFileUploadCtrl.$inject = ['$scope', 'Upload','cloudinary'];
     var d = new Date();
     cloudinary.config().cloud_name= $scope.form.cloudName;
     cloudinary.config().upload_preset = $scope.form.uploadPreset;
-
+    
     $scope.uploadFiles = function(files){
       $scope.files = files;
       if (!$scope.files) return;
@@ -46,12 +46,10 @@ CloudinaryFileUploadCtrl.$inject = ['$scope', 'Upload','cloudinary'];
             file.progress = Math.round((e.loaded * 100.0) / e.total);
             file.status = "Uploading... " + file.progress + "%";
           }).success(function (data, status, headers, config) {
-            $scope.photos = $scope.photos || [];
             file.result = data;
             file.result.success= true;
-            $scope.model.image = data;
-            $scope.photos.push(data);
             file.status = "Uploaded";
+            $scope.model[$scope.form.key] = data;
           }).error(function (data, status, headers, config) {
             file.result = data;
             file.result.failed= true;
