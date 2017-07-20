@@ -73,3 +73,36 @@ angular.module('test', ["schemaForm","cloudinaryFileUpload"]).controller('FormCo
       });
 
 ```
+
+Get the uploaded file
+---------------------
+
+The developer can have more than one field that is managed as cloudinary file upload, the uploaded file will be available in:  
+
+```javascript
+
+$scope.model[FIELD_KEY]
+
+
+```
+
+The following informations will be available:
+
+```json
+bytes: [SIZE]
+created_at: [UPLOAD DATE]
+existing:true
+format: [FILE_FORMAT]
+height:[FILE_HEIGHT]
+public_id: [PUBLIC_FILE_ID]
+resource_type:[RESOURCE_TYPE]
+secure_url:[HTTPS_FULL_URL]
+signature:[FILE_SIGNATURE]
+success:true
+tags:Array[] [TAGS]
+type:"upload"
+url:[HTTP_FULL_URL]
+version:[FILE_VERSION]
+width:[FILE_WIDTH]
+
+```
